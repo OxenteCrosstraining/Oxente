@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxente Crosstraining - Forje Sua Melhor Versão</title>
+  <link rel="icon" type="image/png" href="img/logo.jpeg">
+  
+  
+  <!-- Tailwind CSS CDN para estilização rápida de alta performance -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fontes Premium: Outfit (Display Esportivo) e Inter (Leitura Limpa) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Configurações Customizadas do Tailwind para Preto e Laranja -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              orange: '#f27d26',
+              'orange-hover': '#ff9142',
+              black: '#0a0a0a',
+              zinc: '#141414',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos Customizados (Efeito de Corte Atlético Skew, Scrollbar e Transições) -->
+  <style>
+    /* Estilização da Scrollbar Laranja */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f27d26;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff9142;
+    }
+
+    /* Efeito Skew (Corte diagonal atlético dos botões) */
+    .skew-athletic {
+      transform: skewX(-10deg);
+    }
+    .skew-athletic-inner {
+      transform: skewX(10deg);
+    }
+  </style>
+</head>
+<body class="bg-brand-black text-gray-100 font-sans antialiased overflow-x-hidden">
+
+  <!-- ==================== HEADER / NAV ==================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center space-x-3 group">
+          <a href="#inicio" class="flex items-center space-x-3 group">
+    <img
+        src="img/logo.jpeg"
+        alt="Logo"
+        class="w-10 h-10 rounded-full object-cover group-hover:scale-105 transition-transform duration-300"
+    >
+</a>
+          <span class="font-display text-xl sm:text-2xl font-black tracking-tighter text-white uppercase">
+            OXENTE<span class="text-brand-orange">CROSSTRAINING</span>
+          </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#inicio" class="text-sm font-bold uppercase tracking-widest text-brand-orange hover:text-brand-orange-hover transition-colors">Início</a>
+          <a href="#estrutura" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-brand-orange transition-colors">Estrutura</a>
+          <a href="#coaches" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-brand-orange transition-colors">Coaches</a>
+          <a href="#app" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-brand-orange transition-colors">O App</a>
+          <a href="#faq" class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-brand-orange transition-colors">Dúvidas</a>
+        </nav>
+
+        <!-- CTA Header -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <a href="#app" class="text-gray-300 hover:text-brand-orange text-sm font-bold uppercase tracking-wider transition-colors">
+            APP
+          </a>
+          <a href="#aula-experimental" class="border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-black font-display font-black px-5 py-2 text-xs uppercase tracking-wider transition-colors duration-300">
+            Agendar Aula
+          </a>
+        </div>
+
+        <!-- Mobile Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+      <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" id="close-drawer-overlay"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-72 bg-[#0a0a0a] p-6 shadow-2xl border-l border-zinc-800 flex flex-col justify-between">
+        <div class="flex flex-col space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+            <span class="font-display text-lg font-black text-white uppercase">MENU</span>
+            <button id="close-drawer-btn" class="text-gray-400 hover:text-white">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+          <nav class="flex flex-col space-y-4">
+            <a href="#inicio" class="text-base font-bold text-gray-300 hover:text-brand-orange" onclick="toggleDrawer()">Início</a>
+            <a href="#estrutura" class="text-base font-bold text-gray-300 hover:text-brand-orange" onclick="toggleDrawer()">Estrutura</a>
+            <a href="#coaches" class="text-base font-bold text-gray-300 hover:text-brand-orange" onclick="toggleDrawer()">Coaches</a>
+            <a href="#app" class="text-base font-bold text-gray-300 hover:text-brand-orange" onclick="toggleDrawer()">O App</a>
+            <a href="#faq" class="text-base font-bold text-gray-300 hover:text-brand-orange" onclick="toggleDrawer()">Dúvidas</a>
+          </nav>
+        </div>
+        <div class="pt-6 border-t border-zinc-800 space-y-3">
+          <a href="#aula-experimental" class="block text-center bg-brand-orange text-black font-display font-black py-3 rounded-lg text-sm uppercase tracking-wider" onclick="toggleDrawer()">
+            Agendar Aula Grátis
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="inicio" class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden pt-20">
+    <div class="absolute inset-0 z-0">
+      <!-- Imagem de Fundo (Filtro escuro e laranja em harmonia com a marca) -->
+      <img src="img/box_externo.jpeg" alt="Treino CrossFit" class="w-full h-full object-cover object-center opacity-30">
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/80 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/40 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col justify-center min-h-[calc(100vh-80px)]">
+      <div class="max-w-3.5xl">
+        <!-- Badge Laranja -->
+        <div class="inline-flex items-center space-x-2 bg-brand-orange/15 border border-brand-orange/30 px-4 py-1.5 rounded-full mb-6">
+          <span class="w-2 h-2 bg-brand-orange rounded-full animate-pulse"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-brand-orange-hover font-bold">Melhore 60 min do seu dia</span>
+        </div>
+
+        <!-- Título com o Skew e Itálico do Design Elegant Dark -->
+        <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight leading-[0.9] mb-6 italic">
+          SUPERE <br>
+          SEUS <br>
+          <span class="text-brand-orange not-italic">LIMITES</span>
+        </h1>
+
+        <p class="font-sans text-gray-300 text-lg sm:text-xl mb-10 max-w-2xl leading-relaxed font-light">
+          <strong> Uma box para todos.</strong> Nosso objetivo é melhorar os melhores 60 minutos do seu dia, trazendo mais saúde, disposição e qualidade de vida. Aqui, não importa sua idade ou experiência: o CrossFit é para todos. Treinos adaptados, comunidade acolhedora e evolução no seu ritmo.💪🚀
+        </p>
+
+        <!-- CTAs com Skew Atlético -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-5">
+          <a href="https://app.tecnofit.com.br/ng/online-scheduling" class="group flex items-center justify-center space-x-3 bg-brand-orange hover:bg-brand-orange-hover text-black font-display font-black px-8 py-4 rounded-xl text-base uppercase tracking-wider transition-all duration-300 shadow-xl shadow-brand-orange/30 active:scale-98 skew-athletic">
+            <span class="skew-athletic-inner">Agende a sua Aula experimental</span>
+          </a>
+
+          <a href="https://chat.whatsapp.com/LA9rMRNBo9QCmJhaoN2YGR?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnEbAfaarBCp0imjJxib1V5aiCDy5KZCgf7x8ch_IM0lQMx5wUIwGD5lmL1to_aem_LZRYufc2ri9V6H-mLx3b1w" class="flex items-center justify-center space-x-3 bg-zinc-950 border border-zinc-800 hover:border-brand-orange text-white hover:text-brand-orange px-8 py-4 rounded-xl text-base font-semibold transition-all duration-300 skew-athletic">
+            <span class="skew-athletic-inner">Grupo Vip Alunos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CARROSSEL ESTRUTURA ==================== -->
+  <section id="estrutura" class="py-24 bg-brand-zinc border-t border-zinc-900 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="font-mono text-sm uppercase tracking-widest text-brand-orange font-bold mb-3 flex items-center justify-center space-x-2">
+          <span class="w-8 h-px bg-brand-orange"></span>
+          <span>Nossa Estrutura</span>
+          <span class="w-8 h-px bg-brand-orange"></span>
+        </h2>
+        <h3 class="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight italic">
+          EQUIPAMENTO DE ELITE E <br>
+          <span class="text-brand-orange not-italic">ESPAÇO PROFISSIONAL</span>
+        </h3>
+        <p class="font-sans text-gray-400 mt-4">
+          +500m² de área equipada com as melhores marcas importadas (Rogue, Eleiko e Concept2) para segurança total e rendimento máximo.
+        </p>
+      </div>
+
+      <!-- Carrossel de Fotos Interativo -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Área de Exibição de Fotos (8 colunas) -->
+        <div class="lg:col-span-8 relative group">
+          <div class="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl bg-zinc-900">
+            <!-- Imagem ativa controlada via JS -->
+            <img id="carousel-img" src="WhatsApp Image 2026-07-06 at 07.42.48 (1).jpeg" alt="Estrutura Box" class="w-full h-full object-cover transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
+          </div>
+
+          <!-- Setas de Controle -->
+          <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/75 hover:bg-brand-orange border border-zinc-800 hover:border-brand-orange text-white hover:text-black p-3 rounded-full transition-all duration-300 shadow-lg cursor-pointer">
+            &#8592;
+          </button>
+          <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/75 hover:bg-brand-orange border border-zinc-800 hover:border-brand-orange text-white hover:text-black p-3 rounded-full transition-all duration-300 shadow-lg cursor-pointer">
+            &#8594;
+          </button>
+        </div>
+
+        <!-- Descrições da Estrutura (4 colunas) -->
+        <div class="lg:col-span-4 flex flex-col justify-between h-full space-y-6">
+          <div class="bg-gradient-to-b from-[#141414] to-[#0a0a0a] p-8 rounded-2xl border border-zinc-800/85">
+            <span id="carousel-count" class="text-brand-orange font-mono text-xs font-black tracking-widest block mb-2">01 / 04</span>
+            <h4 id="carousel-title" class="font-display text-xl sm:text-2xl font-bold text-white uppercase tracking-tight mb-3">Área de LPO & Ginásticos</h4>
+            <p id="carousel-desc" class="font-sans text-gray-400 text-sm leading-relaxed mb-6">Equipamento profissional para levantamento de peso e gaiolas de ginástica de alto padrão.</p>
+            
+            <ul class="space-y-3.5 border-t border-zinc-800 pt-5">
+              <li class="flex items-start space-x-2.5 text-xs text-gray-300">
+                <span class="text-brand-orange font-bold">✔</span>
+                <span>Equipamentos importados com higienização rigorosa diária.</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-gray-300">
+                <span class="text-brand-orange font-bold">✔</span>
+                <span>Piso de borracha de alta absorção de impactos para segurança.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Indicadores tipo Barrinha do Elegant Dark Theme -->
+          <div class="flex gap-2 justify-center lg:justify-start" id="carousel-bars">
+            <div class="h-1 bg-brand-orange transition-all duration-300 cursor-pointer rounded-full flex-1" onclick="goToSlide(0)"></div>
+            <div class="h-1 bg-zinc-700 transition-all duration-300 cursor-pointer rounded-full flex-1" onclick="goToSlide(1)"></div>
+            <div class="h-1 bg-zinc-700 transition-all duration-300 cursor-pointer rounded-full flex-1" onclick="goToSlide(2)"></div>
+            <div class="h-1 bg-zinc-700 transition-all duration-300 cursor-pointer rounded-full flex-1" onclick="goToSlide(3)"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== COACHES SECTION ==================== -->
+  <section id="coaches" class="py-24 bg-brand-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <h2 class="font-mono text-sm uppercase tracking-widest text-brand-orange font-bold mb-3 flex items-center justify-center space-x-2">
+          <span class="w-8 h-px bg-brand-orange"></span>
+          <span>Time de Especialistas</span>
+          <span class="w-8 h-px bg-brand-orange"></span>
+        </h2>
+        <h3 class="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight italic">
+          TREINE COM QUEM REALMENTE <br>
+          <span class="text-brand-orange not-italic">ENTENDE DO ASSUNTO</span>
+        </h3>
+        <p class="font-sans text-gray-400 mt-4">
+          Nossos coaches possuem certificações reconhecidas e são focados em adaptar cada movimento aos seus limites.
+        </p>
+      </div>
+
+      <!-- Coaches Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        
+        <!-- Coach 1 (Head Coach) -->
+        <div class="flex flex-col sm:flex-row gap-6 bg-brand-zinc p-6 rounded-2xl border border-zinc-800 hover:border-brand-orange/40 transition-all group">
+          <div class="w-24 h-24 sm:w-32 sm:h-32 bg-zinc-800 rounded-full border-2 border-brand-orange overflow-hidden shrink-0 mx-auto sm:mx-0">
+            <img src="img/tuti.jpeg" alt="Tuti Perco" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <div class="inline-block bg-brand-orange/10 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-md mb-2">HEAD COACH</div>
+            <h4 class="font-display text-xl font-bold uppercase text-white">Tuti Perco</h4>
+            <p class="font-sans text-zinc-400 text-sm mt-2 leading-relaxed">Licenciatura Plena em Educação Fisica CREF: BA-003638, Faixa Preta no Jiu-Jitsu,Pos Graduação em Atividade Adptado a Saúde. Pos Gradução Fisiologia do Exercicio adaptado á saúde.</p>
+            <p class="text-xs text-zinc-500 mt-3 font-mono">Certificações: CrossFit L1, Ginástica Avançada, LPO.</p>
+          </div>
+        </div>
+
+        <!--Coach 2-->
+        <div class="flex flex-col sm:flex-row gap-6 bg-brand-zinc p-6 rounded-2xl border border-zinc-800 hover:border-brand-orange/40 transition-all group">
+          <div class="w-24 h-24 sm:w-32 sm:h-32 bg-zinc-800 rounded-full border border-zinc-700 overflow-hidden shrink-0 mx-auto sm:mx-0">
+            <img src="img/iasmim.jpeg" alt="Iasmin Ramos" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <div class="inline-block bg-zinc-800 text-gray-300 text-[10px] font-bold px-2.5 py-1 rounded-md mb-2">COACH</div>
+            <h4 class="font-display text-xl font-bold uppercase text-white">Iasmin Ramos</h4>
+            <p class="font-sans text-zinc-400 text-sm mt-2 leading-relaxed">Bacharel em  Educação Fisica CREF:G/BA - 015617, Pós Graduação em Prescrição de Exercicios para Grupos especiais e reabilitação traumo-ortopédica</p>
+            <p class="text-xs text-zinc-500 mt-3 font-mono">Certificações: CrossFit L1, Ginástica Olímpica adaptada.</p>
+          </div>
+        </div>
+
+
+        <!-- Coach 3 -->
+        <div class="flex flex-col sm:flex-row gap-6 bg-brand-zinc p-6 rounded-2xl border border-zinc-800 hover:border-brand-orange/40 transition-all group">
+          <div class="w-24 h-24 sm:w-32 sm:h-32 bg-zinc-800 rounded-full border border-zinc-700 overflow-hidden shrink-0 mx-auto sm:mx-0">
+            <img src="img/victor.jpeg" alt="Victor Santana" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <div class="inline-block bg-zinc-800 text-gray-300 text-[10px] font-bold px-2.5 py-1 rounded-md mb-2">COACH</div>
+            <h4 class="font-display text-xl font-bold uppercase text-white">Victor Santana</h4>
+            <p class="font-sans text-zinc-400 text-sm mt-2 leading-relaxed">Bacharel em  Educação Fisica CREF:BA - 013104, Pós Graduação em Treinamento funcional e Crosstraining.</p>
+            <p class="text-xs text-zinc-500 mt-3 font-mono">Certificações: CrossFit L1.</p>
+          </div>
+        </div>
+        <!--Coach 4-->
+        <div class="flex flex-col sm:flex-row gap-6 bg-brand-zinc p-6 rounded-2xl border border-zinc-800 hover:border-brand-orange/40 transition-all group">
+          <div class="w-24 h-24 sm:w-32 sm:h-32 bg-zinc-800 rounded-full border border-zinc-700 overflow-hidden shrink-0 mx-auto sm:mx-0">
+            <img src="img/bruno.jpeg" alt="Bruno Wagner" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <div class="inline-block bg-zinc-800 text-gray-300 text-[10px] font-bold px-2.5 py-1 rounded-md mb-2">COACH</div>
+            <h4 class="font-display text-xl font-bold uppercase text-white">Bruno Wagner</h4>
+            <p class="font-sans text-zinc-400 text-sm mt-2 leading-relaxed">Bacharel em  Educação Fisica, Pós Graduação em Fisiologia em Prescrição.</p>
+            <p class="text-xs text-zinc-500 mt-3 font-mono">Certificações: Periodização no Crossfit, Introdução ao LPO.</p>
+          </div>
+        </div>
+
+      </div>
+
+      
+
+    </div>
+
+    
+  </section>
+
+  <!-- ==================== SEÇÃO APP DO BOX ==================== -->
+  <section id="app" class="py-24 bg-brand-zinc border-t border-zinc-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Info Left -->
+        <div class="lg:col-span-7">
+          <h2 class="font-mono text-sm uppercase tracking-widest text-brand-orange font-bold mb-3 flex items-center space-x-2">
+            <span class="w-8 h-px bg-brand-orange"></span>
+            <span>Tecnologia no Box</span>
+          </h2>
+          <h3 class="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight italic mb-6">
+            SUA EVOLUÇÃO <br>
+            <span class="text-brand-orange not-italic">NA PALMA DA MÃO</span>
+          </h3>
+          <p class="font-sans text-gray-400 text-lg leading-relaxed mb-8 font-light">
+           Todo o ecossistema do box está integrado ao <strong> Tecnofit Box </strong>, o aplicativo é altamente intuitivo. Nele, você agenda seu horário do WOD, acompanha seu histórico de cargas (PRs), interaja com a comunidade e faça o seu check-in com apenas um clique.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+            <div class="flex items-start space-x-3">
+              <span class="text-brand-orange text-lg">➔</span>
+              <div>
+                <h4 class="text-white font-bold uppercase text-sm">Reserva de Horários Rápida</h4>
+                <p class="text-zinc-500 text-xs mt-1">Check-in e cancelamento rápido para as aulas do dia.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <span class="text-brand-orange text-lg">➔</span>
+              <div>
+                <h4 class="text-white font-bold uppercase text-sm">Controle de Cargas (PRs)</h4>
+                <p class="text-zinc-500 text-xs mt-1">Monitore e registre sua evolução de força física ao longo do tempo.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- App Store Links de Download -->
+          <div class="flex flex-wrap gap-4">
+            <a href="https://apps.apple.com/us/app/tecnofit-box/id1256624538" target="_blank" class="flex items-center space-x-3 bg-brand-black border border-zinc-800 hover:border-brand-orange text-white px-5 py-3 rounded-xl transition-all">
+              <span class="text-2xl"></span>
+              <div class="text-left">
+                <p class="text-[9px] uppercase text-zinc-500 font-bold leading-none">Baixar na</p>
+                <p class="font-display text-sm font-bold leading-tight mt-0.5">App Store</p>
+              </div>
+            </a>
+            <a href="https://play.google.com/store/search?q=tecnofit+box&c=apps" target="_blank" class="flex items-center space-x-3 bg-brand-black border border-zinc-800 hover:border-brand-orange text-white px-5 py-3 rounded-xl transition-all">
+              <span class="text-xl text-brand-orange">▲</span>
+              <div class="text-left">
+                <p class="text-[9px] uppercase text-zinc-500 font-bold leading-none">Baixar no</p>
+                <p class="font-display text-sm font-bold leading-tight mt-0.5">Google Play</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interatividade Phone Mockup Right (O Check-in interativo do box) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-80 h-[520px] bg-black border-4 border-zinc-800 rounded-[35px] p-3 flex flex-col justify-between shadow-2xl relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-zinc-800 rounded-b-xl"></div>
+            <div class="flex justify-between items-center text-[10px] text-zinc-500 font-mono px-2 pt-1">
+              <span>12:55</span>
+              <span class="text-brand-orange font-bold">WOD APP</span>
+            </div>
+
+            <!-- Tela do App -->
+            <div class="bg-zinc-950 rounded-2xl p-4 flex-grow flex flex-col justify-between border border-zinc-900 mt-2">
+              <div>
+                <p class="text-[10px] text-zinc-500 font-bold tracking-widest uppercase">WOD DO DIA</p>
+                <h4 class="font-display text-lg font-black text-brand-orange uppercase leading-none mt-1">HERO WOD: KELLY</h4>
+                
+                <div class="text-xs text-zinc-400 mt-4 space-y-2 font-mono">
+                  <p>5 Rounds por Tempo de:</p>
+                  <p>• 400m Corrida</p>
+                  <p>• 30 Box Jumps (Saltos na Caixa)</p>
+                  <p>• 30 Wall Balls (Bola ao Alvo)</p>
+                </div>
+              </div>
+
+              <!-- Botão Interativo com Javascript que simula o Check-in em Tempo Real -->
+              <button id="btn-checkin-app" onclick="triggerCheckIn()" class="w-full bg-brand-orange hover:bg-brand-orange-hover text-black py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors">
+                Fazer Check-In no WOD
+              </button>
+            </div>
+            
+            <div class="w-24 h-1 bg-zinc-800 rounded-full mx-auto mb-1"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FORMULÁRIO DE AGENDAMENTO (GERA WHATSAPP) ==================== -->
+  <section id="aula-experimental" class="py-24 bg-brand-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto bg-brand-zinc p-8 sm:p-12 rounded-3xl border border-zinc-800 shadow-2xl relative">
+        
+        <div class="text-center mb-10">
+          <span class="text-brand-orange text-xs uppercase tracking-widest font-mono font-bold">100% Grátis & Sem Compromisso</span>
+          <h3 class="font-display text-2xl sm:text-4xl font-black text-white uppercase tracking-tight italic mt-2">
+            RESERVE SUA <span class="text-brand-orange not-italic">AULA EXPERIMENTAL</span>
+          </h3>
+          <p class="text-sm text-zinc-400 mt-2">
+            Escolha as suas preferências abaixo e nosso time entrará em contato rápido para confirmar!
+          </p>
+        </div>
+
+        <div class="text-center">
+    <a
+        href="https://app.tecnofit.com.br/ng/online-scheduling"
+        target="_blank"
+        class="inline-block bg-brand-orange hover:bg-brand-orange-hover text-black font-display font-black py-4 px-8 rounded-xl text-base uppercase tracking-wider transition-all skew-athletic"
+    >
+        <span class="skew-athletic-inner block">
+            Agendar Aula Experimental
+        </span>
+    </a>
+
+    <p class="text-sm text-zinc-400 mt-4">
+        Clique no botão acima para escolher o melhor dia e horário diretamente no aplicativo.
+    </p>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ACCORDION ==================== -->
+  <section id="faq" class="py-24 bg-brand-zinc border-t border-zinc-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <h2 class="font-mono text-sm uppercase tracking-widest text-brand-orange font-bold mb-3 flex items-center justify-center space-x-2">
+          <span class="w-8 h-px bg-brand-orange"></span>
+          <span>Dúvidas Frequentes</span>
+          <span class="w-8 h-px bg-brand-orange"></span>
+        </h2>
+        <h3 class="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight italic">
+          PERGUNTAS <span class="text-brand-orange not-italic">FREQUENTES</span>
+        </h3>
+      </div>
+
+      <!-- FAQ Items List -->
+      <div class="space-y-4">
+        
+        <!-- Accordion 1 -->
+        <div class="bg-brand-black rounded-xl border border-zinc-800 overflow-hidden">
+          <button onclick="toggleFAQ(0)" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+            <span class="font-display text-base sm:text-lg font-bold text-white">Nunca fiz CrossFit, posso treinar?</span>
+            <span id="faq-icon-0" class="text-brand-orange font-bold transition-transform duration-300">+</span>
+          </button>
+          <div id="faq-content-0" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="p-6 pt-0 text-sm sm:text-base text-zinc-400 font-light border-t border-zinc-900/40">
+              Com certeza! O CrossFit é adaptado para qualquer idade, tipo físico ou nível de condicionamento. Nossos coaches vão reduzir pesos e ajustar movimentos para você aprender e treinar de forma 100% segura.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accordion 2 -->
+        <div class="bg-brand-black rounded-xl border border-zinc-800 overflow-hidden">
+          <button onclick="toggleFAQ(1)" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+            <span class="font-display text-base sm:text-lg font-bold text-white">Como funciona a primeira aula experimental?</span>
+            <span id="faq-icon-1" class="text-brand-orange font-bold transition-transform duration-300">+</span>
+          </button>
+          <div id="faq-content-1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="p-6 pt-0 text-sm sm:text-base text-zinc-400 font-light border-t border-zinc-900/40">
+              Basta preencher o formulário e enviar a mensagem no WhatsApp. Nós agendaremos um horário especial onde um coach acompanhará você individualmente, explicando os movimentos e realizando o treino adaptado.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accordion 3 -->
+        <div class="bg-brand-black rounded-xl border border-zinc-800 overflow-hidden">
+          <button onclick="toggleFAQ(2)" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+            <span class="font-display text-base sm:text-lg font-bold text-white">Preciso agendar meus treinos no dia a dia?</span>
+            <span id="faq-icon-2" class="text-brand-orange font-bold transition-transform duration-300">+</span>
+          </button>
+          <div id="faq-content-2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <p class="p-6 pt-0 text-sm sm:text-base text-zinc-400 font-light border-t border-zinc-900/40">
+              Sim! Através do nosso aplicativo, você escolhe seu horário e confirma sua vaga com apenas dois cliques para termos sempre turmas organizadas e atenção total do coach.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-black py-16 border-t border-zinc-900 text-sm text-gray-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        
+        <div>
+          <span class="font-display text-xl font-black text-white uppercase">OXENTE<span class="text-brand-orange">CROSSTRAINING</span></span>
+          <p class="mt-4 text-xs sm:text-sm text-zinc-400 leading-relaxed">Melhorando 60 minutos do seu dia, bora?.</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider mb-4">Contatos</h4>
+          <p class="text-zinc-400 mt-2">📍 Rua Agenlo Brito ,31 -Federação, Salvador(BA)</p>
+          <p class="text-zinc-400 mt-1">📞 (71) 99197-1743 (Recepção)</p>
+          <p class="text-zinc-400 mt-1">✉ crossfitoxente@gmail.com</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider mb-4">Funcionamento</h4>
+          <p class="text-zinc-400 mt-2">Segunda a Sexta: 05:30 às 21:30</p>
+          <p class="text-zinc-400 mt-1">Sábados: 08:00 às 12:00</p>
+          <p class="text-zinc-400 mt-1">Domingos e Feriados: Fechado</p>
+        </div>
+
+      </div>
+
+      <div class="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs">
+        <p>© 2026 Oxente Crosstraining. Todos os direitos reservados.</p>
+        <p class="mt-4 sm:mt-0 font-mono text-brand-orange font-bold"></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== LOGICA JAVASCRIPT EM TEMPO REAL ==================== -->
+  <script>
+    // 1. Controle de Scroll do Header
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 25) {
+        header.classList.add('bg-black/90', 'backdrop-blur-md', 'border-b', 'border-brand-orange/20', 'py-3');
+        header.classList.remove('bg-transparent', 'py-5');
+      } else {
+        header.classList.remove('bg-black/90', 'backdrop-blur-md', 'border-b', 'border-brand-orange/20', 'py-3');
+        header.classList.add('bg-transparent', 'py-5');
+      }
+    });
+
+    // 2. Mobile Menu Drawer
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const closeDrawerOverlay = document.getElementById('close-drawer-overlay');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+
+    function toggleDrawer() {
+      mobileDrawer.classList.toggle('translate-x-full');
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleDrawer);
+    closeDrawerBtn.addEventListener('click', toggleDrawer);
+    closeDrawerOverlay.addEventListener('click', toggleDrawer);
+
+    // 3. Controle e Transições do Carrossel de Estrutura
+    const slides = [
+      {
+        img: "img/area_de_treino1.jpeg",
+        title: "Área de LPO & Ginásticos",
+        desc: "Equipamento profissional importado para levantamento de peso e barras de ginástica de alta segurança."
+      },
+      {
+        img: "img/entrada.jpeg",
+        title: "Espaço Amplo +500m²",
+        desc: "Uma infraestrutura premium e adaptada para turmas, mantendo o distanciamento e conforto."
+      },
+      {
+        img: "img/banheiro_masculino2.jpeg",
+        title: "Vestiarios completos",
+        desc: "Estrutura moderna com chuveiros aquecidos, armários e higienização constante para garantir o seu conforto antes e depois do WOD."
+      },
+      {
+        img: "img/recepcao.jpeg",
+        title: "Aparelhos de Cardio Premium",
+        desc: "Remos Concept2, Assault AirBikes e SkiErgs dedicados ao condicionamento metabólico completo."
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      const carouselImg = document.getElementById('carousel-img');
+      const carouselCount = document.getElementById('carousel-count');
+      const carouselTitle = document.getElementById('carousel-title');
+      const carouselDesc = document.getElementById('carousel-desc');
+      const bars = document.getElementById('carousel-bars').children;
+
+      // Animação rápida de transição de opacidade
+      carouselImg.style.opacity = 0.3;
+      
+      setTimeout(() => {
+        carouselImg.src = slides[currentSlide].img;
+        carouselCount.innerText = `0${currentSlide + 1} / 0${slides.length}`;
+        carouselTitle.innerText = slides[currentSlide].title;
+        carouselDesc.innerText = slides[currentSlide].desc;
+        
+        // Atualizar as barrinhas de controle
+        for (let i = 0; i < bars.length; i++) {
+          if (i === currentSlide) {
+            bars[i].className = "h-1 bg-brand-orange transition-all duration-300 cursor-pointer rounded-full flex-1";
+          } else {
+            bars[i].className = "h-1 bg-zinc-700 transition-all duration-300 cursor-pointer rounded-full flex-1";
+          }
+        }
+        carouselImg.style.opacity = 1;
+      }, 200);
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      updateCarousel();
+    }
+
+    // Auto Play do Carrossel a cada 6 segundos
+    setInterval(nextSlide, 6000);
+
+    // 4. Simulação de Interatividade no App do Box (Check-In)
+    function triggerCheckIn() {
+      const btn = document.getElementById('btn-checkin-app');
+      btn.innerText = "Confirmando...";
+      btn.classList.add('opacity-75');
+      
+      setTimeout(() => {
+        btn.innerText = "Check-In Confirmado! (WOD 19:30)";
+        btn.className = "w-full bg-emerald-500 text-black py-3 rounded-lg text-xs font-bold uppercase tracking-wider cursor-default";
+        btn.removeAttribute('onclick');
+      }, 1200);
+    }
+
+    // 5. Agendamento com Redirecionamento Personalizado direto para WhatsApp
+    function handleBooking(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('form-name').value;
+      const phone = document.getElementById('form-phone').value;
+      const day = document.getElementById('form-day').value;
+      const time = document.getElementById('form-time').value;
+
+      // Telefone de teste do box de crossfit
+      const boxWhatsappPhone = "5571991971743"; 
+
+      // Mensagem personalizada gerada automaticamente
+      const msg = `Olá! Meu nome é *${name}* e gostaria de agendar uma *Aula Experimental Gratuita* no box!\n\n📅 *Dia:* ${day}\n🕒 *Horário/Turno:* ${time}\n\nPode confirmar meu horário?`;
+      
+      const whatsappUrl = `https://wa.me/${boxWhatsappPhone}?text=${encodeURIComponent(msg)}`;
+      
+      // Abre a URL do WhatsApp Web/App direto na aba do usuário
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // 6. FAQs Accordion Interativo
+    function toggleFAQ(idx) {
+      const content = document.getElementById(`faq-content-${idx}`);
+      const icon = document.getElementById(`faq-icon-${idx}`);
+      
+      if (content.style.maxHeight === '0px' || !content.style.maxHeight) {
+        content.style.maxHeight = '200px';
+        icon.innerText = '−';
+        icon.classList.add('rotate-180');
+      } else {
+        content.style.maxHeight = '0px';
+        icon.innerText = '+';
+        icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
+</body>
+</html>
